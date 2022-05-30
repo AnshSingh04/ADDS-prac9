@@ -64,18 +64,20 @@ int main(void) {
     ss << str;
     string in;
     int num_count = 0;
-    int operand_count = 0;
+    int operator_count = 0;
     string prefix;
     while (ss >> in) {   
-        if(in <= "99" && in >= "0")
+        if(in <= "9" && in >= "0")
             num_count++;
         else if((in == "+") || (in == "-") || (in == "*") || (in == "/"))
-            operand_count++;
+            operator_count++;
         prefix.append(in);
     }
-    string result = convertInfix(prefix,num_count,operand_count);
-    int res = evaluatePrefix(prefix);
-    cout<<result<<"="<<res;
+    if(operator_count == num_count-1) {
+        string result = convertInfix(prefix);
+        int res = evaluatePrefix(prefix);
+        cout<<result<<"="<<res;
+    }
     else
         cout<<"Error"<<endl;
 }
