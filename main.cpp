@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 #include <string>
 #include <sstream>
 #include <algorithm>
@@ -6,9 +6,7 @@
 
 using namespace std;
 
-string convertInfix(string prefix,int num_count, int operand_count) {
-    if(operand_count != num_count-1)
-        return "Error";
+string convertInfix(string prefix) {
     stack<string> infix;
     int len = prefix.size();
     for (int i =len-1; i >= 0; i--) {
@@ -69,17 +67,15 @@ int main(void) {
     int operand_count = 0;
     string prefix;
     while (ss >> in) {   
-        if(in <= "9" && in >= "0")
+        if(in <= "99" && in >= "0")
             num_count++;
         else if((in == "+") || (in == "-") || (in == "*") || (in == "/"))
             operand_count++;
         prefix.append(in);
     }
     string result = convertInfix(prefix,num_count,operand_count);
-    if(result != "Error") {
-        int res = evaluatePrefix(prefix);
-        cout<<result<<"="<<res;
-    }
+    int res = evaluatePrefix(prefix);
+    cout<<result<<"="<<res;
     else
         cout<<"Error"<<endl;
 }
