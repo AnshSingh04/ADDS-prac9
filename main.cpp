@@ -15,12 +15,12 @@ string convertInfix(string prefix) {
             infix.pop();
             string operand2 = infix.top();
             infix.pop();
-            if(i == 0) {
-                string temp = operand1+prefix[i]+operand2;
+            if(prefix[i] == '+' || prefix[i] == '-') {
+                string temp = "("+operand1+prefix[i]+operand2+")";
                 infix.push(temp);
             }   
             else {
-                string temp = "("+operand1+prefix[i]+operand2+")";
+                string temp = operand1+prefix[i]+operand2;
                 infix.push(temp);
             }
         } 
